@@ -74,13 +74,3 @@ spec:
         value: '$(params.acs-scan-api)'
     runAfter:
       - build-image
-  - name: rollout-latest-image
-    taskRef: 
-      name: openshift-client
-      kind: ClusterTask
-    params:
-      - name: SCRIPT
-        value: |
-          oc import-image $(params.is-name):latest
-    runAfter:
-      - scan-image
